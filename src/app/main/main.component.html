@@ -1,0 +1,109 @@
+<main>
+  <header>
+    <img src="logo.png" class="logo" height="100px" width="100px" />
+    <h1>Minijuegos</h1>
+    <nav>
+      <img src="user.png" alt="" (click)="cambiarEstado()" />
+      <a href="./login/pages/login.html" class="login-link"
+        ><b id="log-state">Iniciar Sesión</b></a
+      >
+    </nav>
+  </header>
+  <div class="contenedor-principal">
+    <div class="contenedor">
+      <div class="fila">
+        <a href="./juegos/Snake/index.html">
+          <div class="card">
+            <img src="snakegame.png" class="cover" />
+            <div class="texto">
+              <h2 class="titulo">Snake Game</h2>
+              <p class="descripcion">
+                Desafía tus reflejos y habilidades mientras guías una serpiente
+                hambrienta 🐍
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="./juegos/tateti/index.html">
+          <div class="card">
+            <img src="tateti.png" class="cover" />
+            <div class="texto">
+              <h2 class="titulo">Tateti</h2>
+              <p class="descripcion">
+                Pon a prueba tu estrategia y demuestra quién es el mejor en el
+                clásico desafío
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="fila">
+        <a href="./juegos/piedra-papel-tijera/index.html">
+          <div class="card">
+            <img src="ppt.jpg" class="cover" />
+            <div class="texto">
+              <h2 class="titulo">Piedra, Papel o Tijera</h2>
+              <p class="descripcion">
+                Divertite jugando al clásico juego de piedra papel o tijera.
+              </p>
+            </div>
+          </div>
+        </a>
+        <a routerLink="/memoria" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <div class="card">
+            <img src="memoria.png" class="cover" />
+            <div class="texto">
+              <h2 class="titulo">Memoria</h2>
+              <p class="descripcion">
+                Desafía tu mente encontrando pares y mejora tu memoria
+                divirtiéndote.
+              </p>
+            </div>
+          </div>
+        </a>
+        <a href="./juegos/tetris/index.html">
+          <div class="card">
+            <img src="tetris.png" class="tetris" />
+            <div class="texto">
+              <h2 class="titulo">Tetris</h2>
+              <p class="descripcion">
+                Diviertete jugando al clásico tetris: encaja bloques, elimina
+                líneas, y alcanza la perfección
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="ranking">
+      <h2>
+        Ranking Global
+        <br>
+        <span class="arrow-left" (click)="cambiarRanking(1)"><</span
+        ><span id="nombre_ranking"> {{rankings[ranking_actual].nombre_ranking}} </span
+        ><span class="arrow-right" (click)="cambiarRanking(-1)">></span>
+      </h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jugador</th>
+            <th>Puntos</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-rank">
+          <tr *ngFor="let jugador of rankings[ranking_actual]['puntuaciones']">
+            <td>{{jugador.puesto}}</td>
+            <td>{{jugador.nombre}}</td>
+            <td>{{jugador.puntuacion}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer>
+    IFTS 11 - Desarrollo de implementacion de sistemas en la nube - Grupo 4 -
+    2024
+  </footer>
+</main>
