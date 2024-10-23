@@ -1,0 +1,58 @@
+{
+  "themes": {
+  "messi": [
+    "messi1.jpg",
+    "messi1.jpg",
+    "messi2.jpg",
+    "messi2.jpg",
+    "messi3.jpg",
+    "messi3.jpg",
+    "messi4.jpg",
+    "messi4.jpg",
+    "messi5.jpg",
+    "messi5.jpg",
+    "messi6.jpg",
+    "messi6.jpg",
+    "messi7.jpg",
+    "messi7.jpg",
+    "messi8.jpg",
+    "messi8.jpg"
+    ],
+  "art": [
+    "painting1.jpg",
+    "painting1.jpg",
+    "painting2.jpg",
+    "painting2.jpg",
+    "painting3.jpg",
+    "painting3.jpg",
+    "painting4.jpg",
+    "painting4.jpg",
+    "painting5.jpg",
+    "painting5.jpg",
+    "painting6.jpg",
+    "painting6.jpg",
+    "painting7.jpg",
+    "painting7.jpg",
+    "painting8.jpg",
+    "painting8.jpg"
+    ],
+  "musica": [
+    "cover1.jpg",
+    "cover1.jpg",
+    "cover2.jpg",
+    "cover2.jpg",
+    "cover3.jpg",
+    "cover3.jpg",
+    "cover4.jpg",
+    "cover4.jpg",
+    "cover5.jpg",
+    "cover5.jpg",
+    "cover6.jpg",
+    "cover6.jpg",
+    "cover7.jpg",
+    "cover7.jpg",
+    "cover8.jpg",
+    "cover8.jpg"
+    ]
+  }
+}

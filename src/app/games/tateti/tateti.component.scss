@@ -1,0 +1,158 @@
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #0c1618;
+  color: white;
+}
+
+#bienvenida {
+  display: block;
+  #jugador1,
+  #jugador2 {
+    margin: .1rem;
+  }
+}
+
+#juego {
+  display: none;
+}
+
+#contenedor-juego {
+  display: flex;
+  align-items: center;
+}
+
+#tablero-juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-gap: 10px;
+  margin: 0 20px;
+}
+
+#jugador1Tablero,
+#jugador2Tablero {
+  width: 150px;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.activo {
+  transform: scale(1.1);
+}
+
+.celda {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid #34495e;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+  border-radius: 5px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.celda:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.celda.x {
+  color: #faa916; /* Color para la X actualizado */
+  background-color: rgba(250, 169, 22, 0.5);
+  /* Fondo para la X */
+}
+
+.celda.o {
+  color: #03b5aa; /* Color para la O actualizado */
+  background-color: rgba(3, 181, 170, 0.5);
+
+  /* Fondo para la O */
+}
+
+#mensaje {
+  margin-top: 20px;
+  font-size: 24px;
+  color: white; /* Color del mensaje */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.oculto {
+  display: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #005e7a;
+  color: white;
+  border: 2px solid #0c1618;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-right: 10px;
+}
+
+button:hover {
+  border: 2px solid #fff;
+  background-color: #006d8f;
+}
+
+button:active {
+  background-color: #c44a45;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  margin: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.volver {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #005e7a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.volver:hover {
+  color: white;
+  background-color: #006d8f;
+  border: 2px solid #fff;
+}
+.volver svg {
+  width: 100%;
+  height: 100%;
+}
