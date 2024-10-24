@@ -11,7 +11,7 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 
 
 export const routes: Routes = [
-  { path: 'main', component: MainComponent },
+  { path: 'main/:logueado', component: MainComponent },
   { path: 'login',  component: LoginComponent },
   { path: 'register',   component: RegisterComponent },
   { path: 'forgot-password',    component: ForgotPasswordComponent },
@@ -20,5 +20,6 @@ export const routes: Routes = [
   { path: 'snake', component: SnakeComponent },
   { path: 'tateti', component: TatetiComponent },
   { path: 'ppt', component: PptComponent },
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: '', redirectTo: 'main/false', pathMatch: 'full' },
+
 ];

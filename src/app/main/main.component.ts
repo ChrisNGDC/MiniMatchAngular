@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as data from './data.json';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  RouterOutlet,
+  RouterLink,
+  RouterLinkActive,
+  ActivatedRoute,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -12,9 +18,17 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class MainComponent implements OnInit {
   rankings: any[] = [];
+  logueado: string;
+  private sub: any;
 
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
   ngOnInit() {
     this.cargarRankings();
+    this.cambiarEstado();
   }
 
   cargarRankings() {
@@ -33,23 +47,28 @@ export class MainComponent implements OnInit {
     }
   }
 
-  usuario_logeado: boolean = false;
+  login() {
+    if (this.logueado == 'false') {
+      this.router.navigate(['/login']);
+    } else {
+      // this.logueado = 'false';
+      // this.cambiarEstado();
+      this.router.navigate(['/main/false']).then(() => {
+        window.location.reload();
+      });;
+
+    }
+  }
 
   cambiarEstado() {
+    this.sub = this.route.params.subscribe((params) => {
+      this.logueado = params['logueado'];
+    });
     let estado = document.getElementById('log-state');
-    switch (estado.innerText) {
-      case 'Iniciar Sesión':
-        this.usuario_logeado = false;
-        break;
-      case 'Cerrar Sesión':
-        this.usuario_logeado = true;
-        break;
-    }
-    if (this.usuario_logeado) {
+    if (this.logueado == 'false') {
       estado.innerText = 'Iniciar Sesión';
     } else {
       estado.innerText = 'Cerrar Sesión';
     }
-    this.usuario_logeado = !this.usuario_logeado;
   }
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,5 +11,10 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   host: { ngSkipHydration: 'true' }
 })
 export class LoginComponent {
-
+  constructor(private router: Router) { }
+  login() {
+    if(document.getElementById('email').ariaValueText ==  "test@gmail.com" && document.getElementById('password').ariaValueText == "test"){
+      this.router.navigate(['/main', 'true']);
+    }
+  }
 }

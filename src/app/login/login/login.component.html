@@ -5,7 +5,7 @@
 </head>
 <body>
   <div class="form">
-    <a routerLink="/main" routerLinkActive="active" ariaCurrentWhenActive="page"
+    <a routerLink="/main/false" routerLinkActive="active" ariaCurrentWhenActive="page"
       ><img id="back" src="back.png" alt=""
     /></a>
     <!-- Login form container -->
@@ -44,7 +44,7 @@
       </div>
 
       <!-- Login button ; la parte del a es temporal hasta poner logica de logear -->
-      <button type="submit">Iniciar sesion</button>
+      <button type="submit" (click)="login()">Iniciar sesion</button>
 
       <!-- Login option separator -->
       <p class="separator">
