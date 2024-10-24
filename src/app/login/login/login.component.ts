@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
+import * as data from '../../database/users.json';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +14,15 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  host: { ngSkipHydration: 'true' }
+  host: { ngSkipHydration: 'true' },
 })
 export class LoginComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
   login() {
-    if(document.getElementById('email').ariaValueText ==  "test@gmail.com" && document.getElementById('password').ariaValueText == "test"){
+    let email = document.getElementById('email') as HTMLInputElement;
+    let password = document.getElementById('password') as HTMLInputElement;
+
+    if (data.users.find(user => user.mail == email.value && user.password ==  password.value)){
       this.router.navigate(['/main', 'true']);
     }
   }

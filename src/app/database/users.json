@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "username": "Chris",
+      "mail": "chrisgabor95@gmail.com",
+      "password": "Contra123!"
+    },
+    {
+      "username": "admin",
+      "mail": "admin@gmail.com",
+      "password": "admin"
+    },
+    {
+      "username": "test",
+      "mail": "test@gmail.com",
+      "password": "test"
+    }
+  ]
+}

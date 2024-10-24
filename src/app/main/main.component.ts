@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import * as data from './data.json';
+import * as data from '../database/games.json';
 import {
   RouterOutlet,
   RouterLink,
