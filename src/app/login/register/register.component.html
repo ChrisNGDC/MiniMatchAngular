@@ -6,7 +6,7 @@
 <body>
   <div class="form">
     <!-- Signup form container -->
-    <form action="#">
+    <form action="javascript:void(0);" (submit)="register()">
       <h3>Registrarme con</h3>
 
       <!-- Username  input -->
@@ -17,6 +17,8 @@
           id="username"
           placeholder="Ingresar nombre de usuario"
           required
+          autocomplete="new-username"
+          value=""
         />
       </div>
 
@@ -28,6 +30,8 @@
           id="email"
           placeholder="Ingresar correo electronico"
           required
+          autocomplete="new-email"
+          value=""
         />
       </div>
 
@@ -42,6 +46,8 @@
           id="password"
           placeholder="Ingresar contraseña"
           required
+          autocomplete="new-password"
+          value=""
         />
       </div>
 
@@ -56,7 +62,7 @@
       <div class="login_option">
         <!-- Google button -->
         <div class="option">
-          <a href="#">
+          <a>
             <img src="google.png" alt="Google" />
             <span>Google</span>
           </a>

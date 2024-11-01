@@ -7,8 +7,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.scss',
-  host: { ngSkipHydration: 'true' }
+  styleUrl: './forgot-password.component.scss'
 })
 export class ForgotPasswordComponent {
 

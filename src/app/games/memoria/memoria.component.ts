@@ -8,8 +8,7 @@ import * as data from './data.json';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './memoria.component.html',
-  styleUrl: './memoria.component.scss',
-  host: { ngSkipHydration: 'true' }
+  styleUrl: './memoria.component.scss'
 })
 export class MemoriaComponent implements OnInit {
   themes: { messi: string[]; art: string[]; musica: string[] };

@@ -6,8 +6,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './tateti.component.html',
-  styleUrl: './tateti.component.scss',
-  host: { ngSkipHydration: 'true' }
+  styleUrl: './tateti.component.scss'
 })
 export class TatetiComponent{
   turno = 'X';

@@ -7,8 +7,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './ppt.component.html',
-  styleUrl: './ppt.component.scss',
-  host: { ngSkipHydration: 'true' },
+  styleUrl: './ppt.component.scss'
 })
 export class PptComponent {
   opcionJugador: any;

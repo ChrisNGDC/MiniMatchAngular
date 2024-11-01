@@ -13,8 +13,7 @@ import * as data from '../../database/users.json';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
-  host: { ngSkipHydration: 'true' },
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   constructor(private router: Router) {}
