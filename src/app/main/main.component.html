@@ -104,7 +104,7 @@
         <div id="juegos">
           <p class="arrow-left" (click)="cambiarRanking(1)"><</p>
         <p id="nombre_ranking">
-          Memoria
+          {{ rankings[ranking_actual].juego }}
         </p>
         <p class="arrow-right" (click)="cambiarRanking(-1)">></p>
         </div>
