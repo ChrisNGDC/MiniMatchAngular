@@ -18,6 +18,7 @@ import { PuntuacionesService } from '../services/puntuaciones.service';
 })
 export class MainComponent implements OnInit {
   rankings: any[] = [];
+  puestos: string[] = ['🥇', '🥈', '🥉', '4', '5', '6', '7', '8', '9', '10'];
   juegos: string[] = ['tateti', 'ppt', 'memoria', 'snake', 'tetris'];
   logueado: string;
   private sub: any;
@@ -38,19 +39,16 @@ export class MainComponent implements OnInit {
 
   cargarRankings() {
     this.juegos.forEach(async (unJuego) => {
-      setTimeout(async () => {
-        let juegoPuntuaciones;
-        (await this.puntuacionesService.getPuntuaciones(unJuego)).subscribe(
-          (res) => {
-            juegoPuntuaciones = {
-              juego: unJuego,
-              puntuaciones: res,
-            };
-            this.rankings.push(juegoPuntuaciones);
-            console.log(juegoPuntuaciones);
-          }
-        );
-      }, 3000);
+      let juegoPuntuaciones;
+      (await this.puntuacionesService.getPuntuaciones(unJuego)).subscribe(
+        (res) => {
+          juegoPuntuaciones = {
+            juego: unJuego,
+            puntuaciones: res,
+          };
+          this.rankings.push(juegoPuntuaciones);
+        }
+      );
     });
   }
 

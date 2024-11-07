@@ -116,8 +116,8 @@
           </tr>
         </thead>
         <tbody id="tabla-rank">
-          <tr *ngFor="let jugador of rankings[ranking_actual]['puntuaciones']">
-            <td>{{ jugador.id }}</td>
+          <tr *ngFor="let jugador of rankings[ranking_actual]['puntuaciones'], index as i">
+            <td>{{ puestos[i] }}</td>
             <td>{{ jugador.username }}</td>
             <td>{{ jugador.score }}</td>
           </tr>
