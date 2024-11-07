@@ -101,11 +101,13 @@
       <h2>
         Ranking Global
         <br />
-        <span class="arrow-left" (click)="cambiarRanking(1)"><</span>
-        <span id="nombre_ranking">
-          {{ rankings[ranking_actual].juego |titlecase}}
-        </span
-        ><span class="arrow-right" (click)="cambiarRanking(-1)">></span>
+        <div id="juegos">
+          <p class="arrow-left" (click)="cambiarRanking(1)"><</p>
+        <p id="nombre_ranking">
+          Memoria
+        </p>
+        <p class="arrow-right" (click)="cambiarRanking(-1)">></p>
+        </div>
       </h2>
       <table>
         <thead>

@@ -242,3 +242,10 @@ tr {
 #nombre_ranking {
   margin: auto 1rem;
 }
+
+#juegos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto 1rem;
+}
