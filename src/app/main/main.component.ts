@@ -37,6 +37,7 @@ export class MainComponent implements OnInit {
   }
 
   cargarRankings() {
+    this.rankings = [];
     this.juegos.forEach(async (unJuego) => {
       let juegoPuntuaciones;
       (await this.puntuacionesService.getPuntuaciones(unJuego)).subscribe(
