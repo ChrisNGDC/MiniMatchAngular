@@ -101,9 +101,10 @@
       <h2>
         Ranking Global
         <br />
-        <span class="arrow-left" (click)="cambiarRanking(1)"><</span
-        ><span id="nombre_ranking">
-          {{ rankings[ranking_actual].nombre_ranking }} </span
+        <span class="arrow-left" (click)="cambiarRanking(1)"><</span>
+        <span id="nombre_ranking">
+          {{ rankings[ranking_actual].juego |titlecase}}
+        </span
         ><span class="arrow-right" (click)="cambiarRanking(-1)">></span>
       </h2>
       <table>
@@ -116,9 +117,9 @@
         </thead>
         <tbody id="tabla-rank">
           <tr *ngFor="let jugador of rankings[ranking_actual]['puntuaciones']">
-            <td>{{ jugador.puesto }}</td>
-            <td>{{ jugador.nombre }}</td>
-            <td>{{ jugador.puntuacion }}</td>
+            <td>{{ jugador.id }}</td>
+            <td>{{ jugador.username }}</td>
+            <td>{{ jugador.score }}</td>
           </tr>
         </tbody>
       </table>

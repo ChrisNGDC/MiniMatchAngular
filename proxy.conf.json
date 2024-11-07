@@ -1,0 +1,8 @@
+{
+  "/puntuaciones/*": {
+    "target": "http://54.164.249.125:3000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

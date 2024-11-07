@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import * as data from '../database/games.json';
 import {
   RouterOutlet,
   RouterLink,
@@ -8,6 +7,7 @@ import {
   ActivatedRoute,
   Router,
 } from '@angular/router';
+import { PuntuacionesService } from '../services/puntuaciones.service';
 
 @Component({
   selector: 'app-main',
@@ -18,10 +18,15 @@ import {
 })
 export class MainComponent implements OnInit {
   rankings: any[] = [];
+  juegos: string[] = ['tateti', 'ppt', 'memoria', 'snake', 'tetris'];
   logueado: string;
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private puntuacionesService: PuntuacionesService
+  ) {}
 
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -32,7 +37,21 @@ export class MainComponent implements OnInit {
   }
 
   cargarRankings() {
-    this.rankings = data.rankings;
+    this.juegos.forEach(async (unJuego) => {
+      setTimeout(async () => {
+        let juegoPuntuaciones;
+        (await this.puntuacionesService.getPuntuaciones(unJuego)).subscribe(
+          (res) => {
+            juegoPuntuaciones = {
+              juego: unJuego,
+              puntuaciones: res,
+            };
+            this.rankings.push(juegoPuntuaciones);
+            console.log(juegoPuntuaciones);
+          }
+        );
+      }, 3000);
+    });
   }
 
   ranking_actual = 0;
@@ -55,8 +74,7 @@ export class MainComponent implements OnInit {
       // this.cambiarEstado();
       this.router.navigate(['/main/false']).then(() => {
         window.location.reload();
-      });;
-
+      });
     }
   }
 
