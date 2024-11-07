@@ -104,7 +104,7 @@
         <div id="juegos">
           <p class="arrow-left" (click)="cambiarRanking(1)"><</p>
         <p id="nombre_ranking">
-          {{ rankings[ranking_actual].juego }}
+          {{ rankings[ranking_actual].juego |titlecase}}
         </p>
         <p class="arrow-right" (click)="cambiarRanking(-1)">></p>
         </div>
