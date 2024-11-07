@@ -4,14 +4,13 @@ import {
   Router,
   RouterLink,
   RouterLinkActive,
-  RouterOutlet,
 } from '@angular/router';
 import * as data from '../../database/users.json';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

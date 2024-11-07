@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  RouterOutlet,
   RouterLink,
   RouterLinkActive,
   ActivatedRoute,
@@ -12,7 +11,7 @@ import { PuntuacionesService } from '../services/puntuaciones.service';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
