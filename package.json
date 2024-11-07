@@ -7,8 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:MiniMatchAngular": "node dist/mini-match-angular/server/server.mjs",
-    "start:proxy": "ng serve --proxy-config  proxy.conf.json  --open"
+    "serve:ssr:MiniMatchAngular": "node dist/mini-match-angular/server/server.mjs"
   },
   "private": true,
   "dependencies": {
