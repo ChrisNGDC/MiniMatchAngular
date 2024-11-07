@@ -67,12 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MiniMatchAngular:build:production",
-              "proxyConfig": "proxy.conf.json"
+              "buildTarget": "MiniMatchAngular:build:production"
             },
             "development": {
-              "buildTarget": "MiniMatchAngular:build:development",
-              "proxyConfig": "proxy.conf.json"
+              "buildTarget": "MiniMatchAngular:build:development"
             }
           },
           "defaultConfiguration": "development"
