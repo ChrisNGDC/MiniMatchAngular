@@ -21,5 +21,5 @@ export const routes: Routes = [
   { path: 'tateti', component: TatetiComponent },
   { path: 'ppt', component: PptComponent },
   { path: '', redirectTo: 'main/false', pathMatch: 'full' },
-
+  { path: 'main', redirectTo: 'main/false', pathMatch: 'full' },
 ];
