@@ -36,9 +36,9 @@
   <canvas width="500" height="500"> </canvas>
 
   <div id="containerButton">
-    <button id="startButton">Comenzar</button>
+    <button id="startButton" (click)="start()">Comenzar</button>
   </div>
   <div id="containerRestart">
-    <button onclick="restartGame()">Intentar de nuevo</button>
+    <button (click)="restartGame()">Intentar de nuevo</button>
   </div>
 </body>
