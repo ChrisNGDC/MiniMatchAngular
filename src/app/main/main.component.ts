@@ -41,20 +41,20 @@ export class MainComponent implements OnInit {
     this.cambiarEstado();
   }
 
-  cargarRankings() {
+  async cargarRankings() {
     this.rankings = [];
-    this.juegos.forEach(async (unJuego) => {
-      let juegoPuntuaciones;
-      (await this.puntuacionesService.getPuntuaciones()).subscribe(
-        (res) => {
-          juegoPuntuaciones = {
-            juego: unJuego,
-            puntuaciones: res['puntuaciones' as keyof typeof res],
-          };
-          this.rankings.push(juegoPuntuaciones);
-        }
-      );
-    });
+    let response: any;
+    (await this.puntuacionesService.getPuntuaciones()).subscribe((res) => {
+      response = res
+      response!.forEach( (juego: any) => {
+        let juegoPuntuaciones = {
+          juego: juego.gameName,
+          puntuaciones: juego.puntuaciones
+        };
+        this.rankings.push(juegoPuntuaciones);
+      });
+      console.log(this.rankings)
+    })
   }
 
   ranking_actual = 0;
