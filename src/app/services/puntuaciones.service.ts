@@ -8,7 +8,7 @@ export class PuntuacionesService {
 
   constructor(private http: HttpClient) { }
 
-  async getPuntuaciones(juego: string) {
-    return this.http.request('GET', 'http://54.164.249.125:3000/puntuaciones/' + juego)
+  async getPuntuaciones() {
+    return this.http.request('GET', 'https://j3o3czta78.execute-api.us-east-1.amazonaws.com/scores')
   }
 }
