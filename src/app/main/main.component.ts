@@ -19,8 +19,8 @@ export class MainComponent implements OnInit {
   rankings: any[] = [
     {
       juego: 'cargando',
-      puntuaciones: []
-    }
+      puntuaciones: [],
+    },
   ];
   puestos: string[] = ['🥇', '🥈', '🥉', '4', '5', '6', '7', '8', '9', '10'];
   juegos: string[] = ['tateti', 'ppt', 'memoria', 'snake', 'tetris'];
@@ -41,20 +41,29 @@ export class MainComponent implements OnInit {
     this.cambiarEstado();
   }
 
+  organizarRankings() {
+    this.rankings.forEach((juego) => {
+      juego.puntuaciones = juego.puntuaciones
+        .sort((a: any, b: any) => b.score - a.score)
+        .splice(0, 10);
+    });
+    console.log(this.rankings)
+  }
+
   async cargarRankings() {
     this.rankings = [];
     let response: any;
     (await this.puntuacionesService.getPuntuaciones()).subscribe((res) => {
-      response = res
-      response!.forEach( (juego: any) => {
+      response = res;
+      response!.forEach((juego: any) => {
         let juegoPuntuaciones = {
           juego: juego.gameName,
-          puntuaciones: juego.puntuaciones
+          puntuaciones: juego.puntuaciones,
         };
         this.rankings.push(juegoPuntuaciones);
       });
-      console.log(this.rankings)
-    })
+      this.organizarRankings();
+    });
   }
 
   ranking_actual = 0;
