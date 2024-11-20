@@ -1,27 +1,51 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {
   Router,
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import * as data from '../../database/users.json';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { AuthService } from '../../services/AuthService';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, AmplifyAuthenticatorModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
-  constructor(private router: Router) {}
-  login() {
-    let email = document.getElementById('email') as HTMLInputElement;
-    let password = document.getElementById('password') as HTMLInputElement;
+export class LoginComponent implements OnInit {
+  formFields = {
+    signUp: {
+      name: {
+        order: 1
+      },
+      email: {
+        order: 2
+      },
+      password: {
+        order: 5
+      },
+      confirm_password: {
+        order: 6
+      }
+    },
+  };
 
-    if (data.users.find(user => user.mail == email.value && user.password ==  password.value)){
-      this.router.navigate(['/main', 'true']);
-    }
+  constructor(
+    private router: Router,
+    private authService: AuthService,   
+    
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+
+  } 
+
+  continuar() {
+    this.authService.login(); 
+    this.router.navigate(['/main']); 
   }
 }

@@ -4,10 +4,7 @@
     <h1>Minijuegos</h1>
     <nav>
       <img src="user.png" alt=""/>
-      <a
-        (click)="login()"
-        ><b id="log-state">Iniciar Sesión</b></a
-      >
+      <a (click)="toggleLogin()"> <b id="log-state">{{ isLoggedIn ? 'Cerrar Sesión' : 'Iniciar Sesión' }}</b>     </a>      
     </nav>
   </header>
   <div class="contenedor-principal">

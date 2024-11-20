@@ -7,6 +7,7 @@ import {
   Router,
 } from '@angular/router';
 import { PuntuacionesService } from '../services/puntuaciones.service';
+import { AuthService } from '../services/AuthService';
 
 @Component({
   selector: 'app-main',
@@ -26,21 +27,28 @@ export class MainComponent implements OnInit {
   juegos: string[] = ['tateti', 'ppt', 'memoria', 'snake', 'tetris'];
   logueado: string;
   private sub: any;
+  public isLoggedIn: boolean = false;  
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private puntuacionesService: PuntuacionesService
+    private puntuacionesService: PuntuacionesService,
+    private authService: AuthService
   ) {}
 
-  ngOnDestroy() {
+  /*ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-  ngOnInit() {
-    this.cargarRankings();
-    this.cambiarEstado();
-  }
+  }*/
+  ngOnInit() {       
+    this.cargarRankings();     
+    this.authService.isLoggedIn$.subscribe((state) => {
+      this.isLoggedIn = state;
+    });
 
+    
+   
+  }
+  
   async cargarRankings() {
     this.rankings = [];
     let response: any;
@@ -57,8 +65,18 @@ export class MainComponent implements OnInit {
     })
   }
 
-  ranking_actual = 0;
+  ranking_actual = 0;  
 
+  toggleLogin() {
+    if (this.isLoggedIn) {
+      this.authService.signOut();
+      this.authService.logout();       
+    } else {
+      this.authService.login();
+      this.router.navigate(['/login']);      
+    }
+  } 
+  
   cambiarRanking(cantidad: number) {
     if (this.ranking_actual + cantidad > this.rankings.length - 1) {
       this.ranking_actual = 0;
@@ -69,27 +87,7 @@ export class MainComponent implements OnInit {
     }
   }
 
-  login() {
-    if (this.logueado == 'false') {
-      this.router.navigate(['/login']);
-    } else {
-      // this.logueado = 'false';
-      // this.cambiarEstado();
-      this.router.navigate(['/main/false']).then(() => {
-        window.location.reload();
-      });
-    }
-  }
 
-  cambiarEstado() {
-    this.sub = this.route.params.subscribe((params) => {
-      this.logueado = params['logueado'];
-    });
-    let estado = document.getElementById('log-state');
-    if (this.logueado == 'false') {
-      estado.innerText = 'Iniciar Sesión';
-    } else {
-      estado.innerText = 'Cerrar Sesión';
-    }
-  }
+
+  
 }
