@@ -3,8 +3,8 @@
     <img src="logo.png" class="logo" height="100px" width="100px" />
     <h1>Minijuegos</h1>
     <nav>
-      <img src="user.png" alt="" />
-      <a (click)="login()"><b id="log-state">Iniciar Sesión</b></a>
+      <img src="user.png" alt=""/>
+      <a (click)="toggleLogin()"> <b id="log-state">{{ isLoggedIn ? 'Cerrar Sesión' : 'Iniciar Sesión' }}</b>     </a>      
     </nav>
   </header>
   <div class="contenedor-principal">

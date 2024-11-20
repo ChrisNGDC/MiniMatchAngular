@@ -4,74 +4,23 @@
   <title>Iniciar Sesion</title>
 </head>
 <body>
-  <div class="form">
-    <a routerLink="/main/false" routerLinkActive="active" ariaCurrentWhenActive="page"
-      ><img id="back" src="back.png" alt=""
-    /></a>
-    <!-- Login form container -->
-    <form action="#">
-      <h3>Ingresar con</h3>
 
-      <!-- Email input box -->
-      <div class="input_box">
-        <label for="email">Correo Electronico</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Ingresar correo electronico"
-          required
-          autocomplete="new-email"
-        />
-      </div>
-
-      <!-- Password input box -->
-      <div class="input_box">
-        <div class="password_title">
-          <label for="password">Contraseña</label>
-          <a
-            routerLink="/forgot-password"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            >¿Olvidaste la contraseña?</a
-          >
-        </div>
-
-        <input
-          type="password"
-          id="password"
-          placeholder="Ingresar contraseña"
-          required
-          autocomplete="new-password"
-        />
-      </div>
-
-      <!-- Login button ; la parte del a es temporal hasta poner logica de logear -->
-      <button type="submit" (click)="login()">Iniciar sesion</button>
-
-      <!-- Login option separator -->
-      <p class="separator">
-        <span>o</span>
-      </p>
-
-      <div class="login_option">
-        <!-- Google button -->
-        <div class="option">
-          <a href="#">
-            <img src="google.png" alt="Google" />
-            <span>Google</span>
-          </a>
-        </div>
-      </div>
-
-      <p class="sign_up">
-        ¿No tenes una cuenta?
-        <a
-          routerLink="/register"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Registrarme</a
-        >
-      </p>
-    </form>
+  <amplify-authenticator [loginMechanisms]="['email']" [signUpAttributes]="['name']">
+    <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+   
+  <div class="container">
+    <button class="red" (click)="signOut()">X</button>
+    <h1>Bienvenido {{user.signInDetails.loginId}}</h1> 
+    <div class="content">     
+      <p>Haz click en continuar para ir a la pantalla principal</p>      
+      <button class="green" (click)="continuar()">Continuar</button>    
+    </div>
   </div>
+  </ng-template>
+  </amplify-authenticator>
+  
 </body>
