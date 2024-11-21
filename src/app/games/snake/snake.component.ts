@@ -216,7 +216,6 @@ export class SnakeComponent implements OnInit {
     this.parrafo.style.display = 'block';
     document.getElementById('change').innerHTML =
       this.controls.points.toString();
-    this.controls.points = 0;
   };
 
   managePoints = () => {

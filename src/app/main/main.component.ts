@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
   ];
   puestos: string[] = ['🥇', '🥈', '🥉', '4', '5', '6', '7', '8', '9', '10'];
   juegos: string[] = ['tateti', 'ppt', 'memoria', 'snake', 'tetris'];
+  public user: string;
   public isLoggedIn: boolean = false;
 
   constructor(
@@ -28,14 +29,16 @@ export class MainComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  /*ngOnDestroy() {
-    this.sub.unsubscribe();
-  }*/
   ngOnInit() {
     this.cargarRankings();
     this.authService.isLoggedIn$.subscribe((state) => {
       this.isLoggedIn = state;
     });
+    this.authService.getCurrentUserFullName().then(
+      (user) => {
+        this.user = user;
+      }
+    )
   }
 
   organizarRankings() {
@@ -44,7 +47,6 @@ export class MainComponent implements OnInit {
         .sort((a: any, b: any) => b.score - a.score)
         .splice(0, 10);
     });
-    console.log(this.rankings);
   }
 
   async cargarRankings() {
