@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { PuntuacionesService } from '../../services/puntuaciones.service';
 
 @Component({
   selector: 'app-snake',
@@ -51,6 +52,8 @@ export class SnakeComponent implements OnInit {
   parrafo: any;
   containerRestart: any;
   ctx: any;
+
+  constructor(private apiDB: PuntuacionesService) {}
 
   ngOnInit() {
     document.getElementById('change').innerText =
@@ -216,6 +219,7 @@ export class SnakeComponent implements OnInit {
     this.parrafo.style.display = 'block';
     document.getElementById('change').innerHTML =
       this.controls.points.toString();
+    this.apiDB.savePuntuacion('snake', 8000);
   };
 
   managePoints = () => {

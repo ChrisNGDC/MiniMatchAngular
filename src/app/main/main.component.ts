@@ -86,12 +86,4 @@ export class MainComponent implements OnInit {
       this.ranking_actual += cantidad;
     }
   }
-
-  mostarUsuario() {
-    this.authService.getCurrentUserFullName().then(
-      (user) => {
-        console.log(user)
-      }
-    )
-  }
 }
