@@ -258,7 +258,7 @@ export class TetrisComponent implements OnInit {
         lines++;
       }
     }
-    this.score += lines * 100;
+    this.score += lines * 500;
     document.getElementById('gameScore').innerText = `${this.score}`;
   }
 
@@ -268,7 +268,7 @@ export class TetrisComponent implements OnInit {
       this.drawBoard();
       setTimeout(() => {
         this.gameLoop();
-      }, 1000); // Velocidad del juego
+      }, 500); // Velocidad del juego
     } else {
       alert('Game Over! Tus Puntos: ' + this.score);
       this.apiDB.savePuntuacion('tetris', this.score)
