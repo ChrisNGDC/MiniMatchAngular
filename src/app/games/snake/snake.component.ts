@@ -115,8 +115,8 @@ export class SnakeComponent implements OnInit {
       this.controls.snake.push(cola);
       this.controls.grewUp -= 1;
     }
-    //si atrapa presa y la cantidad de puntos es divisible por 50, se restan 10 al intervalo de tiempo
-    if (this.controls.points % 50 == 0 && iGotYou) {
+    //si atrapa presa y la cantidad de puntos es divisible por 250, se restan 10 al intervalo de tiempo
+    if (this.controls.points % 250 == 0 && iGotYou) {
       this.features.intervalo -= 10;
     }
 
@@ -224,7 +224,7 @@ export class SnakeComponent implements OnInit {
 
   managePoints = () => {
     //acumulador de puntaje que actualiza el titulo del principio
-    this.controls.points += 10;
+    this.controls.points += 100;
     document.getElementById('change').innerHTML =
       this.controls.points.toString();
   };

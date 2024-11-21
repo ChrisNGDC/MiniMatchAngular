@@ -2,6 +2,11 @@ body {
   background-color: #0c1618;
   text-align: center;
   margin: 8% 0 0 0;
+  padding-bottom: 10%;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
 }
 
 canvas {
@@ -71,7 +76,7 @@ button:hover {
 }
 
 .volver {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
   width: 50px;
