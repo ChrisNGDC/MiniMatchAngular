@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { PuntuacionesService } from '../../services/puntuaciones.service';
 
 @Component({
   selector: 'app-tetris',
@@ -65,6 +66,8 @@ export class TetrisComponent implements OnInit {
   currentPiece: any;
   score: any;
   gameOver: any;
+
+  constructor(private apiDB: PuntuacionesService) {}
 
   ngOnInit(): void {
     this.canvas = <HTMLCanvasElement>document.getElementById('gameCanvas');
@@ -255,7 +258,7 @@ export class TetrisComponent implements OnInit {
         lines++;
       }
     }
-    this.score += lines * 10;
+    this.score += lines * 100;
     document.getElementById('gameScore').innerText = `${this.score}`;
   }
 
@@ -268,6 +271,7 @@ export class TetrisComponent implements OnInit {
       }, 1000); // Velocidad del juego
     } else {
       alert('Game Over! Tus Puntos: ' + this.score);
+      this.apiDB.savePuntuacion('tetris', this.score)
       this.restartGame();
     }
   }
