@@ -20,12 +20,15 @@ export class PuntuacionesService {
       this.auth.getCurrentUserFullName().then((username) => {
         console.log(user);
         if (user) {
+          const options = {
+            headers: new HttpHeaders().set('Access-Control-Allow-Origin:', '*')
+          };
           const body = {
             username: username,
             score: score,
             id: user.userId,
           };
-          this.http.post('https://j3o3czta78.execute-api.us-east-1.amazonaws.com/scores/' + game, body)
+          this.http.post('https://j3o3czta78.execute-api.us-east-1.amazonaws.com/scores/' + game, body, options)
             .subscribe({
               next: (response) => {
                 console.log(response);
