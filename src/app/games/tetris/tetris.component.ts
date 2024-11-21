@@ -87,10 +87,12 @@ export class TetrisComponent implements OnInit {
     this.score = 0;
     this.gameOver = false;
     document.getElementById('gameScore').innerText = `${this.score}`;
+    document.addEventListener('keydown', this.onKeyDown)
     this.gameLoop();
   }
 
   restartGame() {
+    this.gameOver = true;
     document.getElementById('game-container').classList.add('hidden');
     document.getElementById('menu').classList.remove('hidden');
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -108,7 +110,7 @@ export class TetrisComponent implements OnInit {
   }
 
   createPiece() {
-    const piece = this.pieces[Math.floor(Math.random() * this.pieces.length)];
+    let piece = this.pieces[Math.floor(Math.random() * this.pieces.length)];
     return {
       shape: piece.shape,
       color: piece.color,
@@ -160,10 +162,10 @@ export class TetrisComponent implements OnInit {
     });
   }
 
-  movePieceDown() {
-    this.currentPiece.y++;
+  movePieceDown(): void {
+    this.currentPiece.y += 1;
     if (this.collision()) {
-      this.currentPiece.y--;
+      this.currentPiece.y -= 1;
       this.placePiece();
       this.currentPiece = this.createPiece();
       if (this.collision()) {
@@ -180,10 +182,10 @@ export class TetrisComponent implements OnInit {
   }
 
   rotatePiece() {
-    const shape = this.currentPiece.shape;
-    const rows = shape.length;
-    const cols = shape[0].length;
-    const newShape = [];
+    let shape = this.currentPiece.shape;
+    let rows = shape.length;
+    let cols = shape[0].length;
+    let newShape = [];
 
     // Crear una nueva matriz rotada basada en la forma original
     for (let y = 0; y < cols; y++) {
@@ -194,8 +196,8 @@ export class TetrisComponent implements OnInit {
     }
 
     // Guardar la posición original
-    const oldX = this.currentPiece.x;
-    const oldY = this.currentPiece.y;
+    let oldX = this.currentPiece.x;
+    let oldY = this.currentPiece.y;
 
     // Verificar si la rotación está dentro del tablero
     this.currentPiece.shape = newShape;
@@ -261,7 +263,9 @@ export class TetrisComponent implements OnInit {
     if (!this.gameOver) {
       this.movePieceDown();
       this.drawBoard();
-      setTimeout(this.gameLoop, 1000); // Velocidad del juego
+      setTimeout(() => {
+        this.gameLoop();
+      }, 1000); // Velocidad del juego
     } else {
       alert('Game Over! Tus Puntos: ' + this.score);
       this.restartGame();
@@ -270,13 +274,13 @@ export class TetrisComponent implements OnInit {
 
   onKeyDown = (event: any) => {
     if (!this.gameOver) {
-      if (event.key === 'ArrowLeft') {
+      if (event.key == 'ArrowLeft') {
         this.movePiece(-1);
-      } else if (event.key === 'ArrowRight') {
+      } else if (event.key == 'ArrowRight') {
         this.movePiece(1);
-      } else if (event.key === 'ArrowDown') {
+      } else if (event.key == 'ArrowDown') {
         this.movePieceDown();
-      } else if (event.key === 'ArrowUp') {
+      } else if (event.key == 'ArrowUp') {
         this.rotatePiece();
       }
       this.drawBoard();
