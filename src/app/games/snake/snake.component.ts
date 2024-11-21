@@ -219,7 +219,7 @@ export class SnakeComponent implements OnInit {
     this.parrafo.style.display = 'block';
     document.getElementById('change').innerHTML =
       this.controls.points.toString();
-    this.apiDB.savePuntuacion('snake', 8000);
+    this.apiDB.savePuntuacion('snake', this.controls.points);
   };
 
   managePoints = () => {
