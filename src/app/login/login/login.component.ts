@@ -12,7 +12,7 @@ import { AuthService } from '../../services/AuthService';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, AmplifyAuthenticatorModule],
+  imports: [CommonModule, AmplifyAuthenticatorModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -36,16 +36,16 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService,   
-    
+    private authService: AuthService,
+
   ) {}
 
   async ngOnInit(): Promise<void> {
 
-  } 
+  }
 
   continuar() {
-    this.authService.login(); 
-    this.router.navigate(['/main']); 
+    this.authService.login();
+    this.router.navigate(['/main']);
   }
 }
