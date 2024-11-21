@@ -20,7 +20,6 @@ export class MainComponent implements OnInit {
   ];
   puestos: string[] = ['🥇', '🥈', '🥉', '4', '5', '6', '7', '8', '9', '10'];
   juegos: string[] = ['tateti', 'ppt', 'memoria', 'snake', 'tetris'];
-  logueado: string;
   public isLoggedIn: boolean = false;
 
   constructor(
@@ -84,5 +83,13 @@ export class MainComponent implements OnInit {
     } else {
       this.ranking_actual += cantidad;
     }
+  }
+
+  mostarUsuario() {
+    this.authService.getCurrentUserFullName().then(
+      (user) => {
+        console.log(user)
+      }
+    )
   }
 }
